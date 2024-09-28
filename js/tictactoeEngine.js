@@ -1,4 +1,5 @@
 
+
 const tttTracker = [];
 
 let turn = 'x';
@@ -70,7 +71,7 @@ playItems.forEach( (gridItem) => {
       
       
       console.log(gridItem.innerHTML); 
-        if(!gameOver && gridItem.innerHTML === ""){
+        if(!roundOver && !gameOver && gridItem.innerHTML === ""){
             if(turn == 'x'){
                 tttTracker[gridItem.dataset.value - 1] = "x";
                 gridItem.innerHTML = xSvg;
@@ -103,21 +104,18 @@ function winCheck(){
                 
                 maTrix(); //console print below
                 countScore(xPlayerScore);
-               
-                
-                
-                
                 setTimeout(resetRound, 3000);
+                roundOver = true;
                 
         }
         if( (tttTracker[tempPos[0]] === 'o' && tttTracker[tempPos[1]] === 'o' && tttTracker[tempPos[2]] ===  'o') ){
             // alert('o row');
 
            
-           maTrix();//console print below
-           countScore(oPlayerScore);
-           setTimeout(resetRound, 3000);
-
+            maTrix();//console print below
+            countScore(oPlayerScore);
+            setTimeout(resetRound, 3000);
+            roundOver = true;
 
             
         }
@@ -140,7 +138,8 @@ function resetRound(){
     // gameOver = false;
     playItems.forEach(e => {
         e.innerHTML = "";
-    } )
+    } );
+    roundOver = false;
 }
 
 function maTrix(){

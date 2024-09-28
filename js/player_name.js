@@ -31,6 +31,8 @@ function back(){
     player1.value = "";
     player2.value = "";
     resetRound(); //function is called from tictactoe engine
+    xPlayerScore.innerHTML = 0;
+    oPlayerScore.innerHTML = 0;
 }
 
 function reload(){
